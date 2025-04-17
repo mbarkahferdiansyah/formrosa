@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Registrasi</title>
+    <style>
+        body { font-family: Arial; }
+        table { margin-top: 20px; }
+        td { padding: 8px; }
+    </style>
+</head>
+<body>
+
+<h2>Form Registrasi</h2>
+
+<form id="formRegistrasi">
+    <table>
+        <tr>
+            <td>Nama</td>
+            <td><input type="text" id="nama" required></td>
+        </tr>
+        <tr>
+            <td>Alamat</td>
+            <td><input type="text" id="alamat" required></td>
+        </tr>
+        <tr>
+            <td>Tempat Lahir</td>
+            <td><input type="text" id="tempatLahir" required></td>
+        </tr>
+        <tr>
+            <td>Tanggal Lahir</td>
+            <td><input type="date" id="tanggalLahir" required></td>
+        </tr>
+        <tr>
+            <td>Jenis Kelamin</td>
+            <td>
+                <input type="radio" name="gender" value="Laki - Laki" required> Laki - Laki
+                <input type="radio" name="gender" value="Perempuan"> Perempuan
+            </td>
+        </tr>
+        <tr>
+            <td>Pendidikan</td>
+            <td>
+                <select id="pendidikan" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="SMA">SMA</option>
+                    <option value="D3">D3</option>
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Submit</button>
+                <button type="reset">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    document.getElementById('formRegistrasi').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const data = {
+            nama: document.getElementById('nama').value,
+            alamat: document.getElementById('alamat').value,
+            tempatLahir: document.getElementById('tempatLahir').value,
+            tanggalLahir: document.getElementById('tanggalLahir').value,
+            gender: document.querySelector('input[name="gender"]:checked').value,
+            pendidikan: document.getElementById('pendidikan').value
+        };
+
+        // Simpan data di localStorage
+        localStorage.setItem('formData', JSON.stringify(data));
+
+        // Redirect ke halaman hasil
+        window.location.href = "hasilForm.html";
+    });
+</script>
+
+</body>
+</html>

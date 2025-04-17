@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Registrasi</title>
+    <style>
+        body { font-family: Arial; }
+        table { border-collapse: collapse; margin-top: 20px; }
+        td, th { border: 1px solid #000; padding: 8px; }
+    </style>
+</head>
+<body>
+
+<h2>Data Registrasi</h2>
+
+<table>
+    <tr><td>Nama</td><td id="outNama"></td></tr>
+    <tr><td>Alamat</td><td id="outAlamat"></td></tr>
+    <tr><td>Tempat Lahir</td><td id="outTempatLahir"></td></tr>
+    <tr><td>Tanggal Lahir</td><td id="outTanggalLahir"></td></tr>
+    <tr><td>Jenis Kelamin</td><td id="outGender"></td></tr>
+    <tr><td>Pendidikan</td><td id="outPendidikan"></td></tr>
+</table>
+
+<br><a href="formInput.html">Back To Home</a>
+
+<script>
+    // Ambil data dari localStorage
+    const data = JSON.parse(localStorage.getItem('formData'));
+
+    if (data) {
+        document.getElementById('outNama').textContent = data.nama;
+        document.getElementById('outAlamat').textContent = data.alamat;
+        document.getElementById('outTempatLahir').textContent = data.tempatLahir;
+        document.getElementById('outTanggalLahir').textContent = data.tanggalLahir;
+        document.getElementById('outGender').textContent = data.gender;
+        document.getElementById('outPendidikan').textContent = data.pendidikan;
+    } else {
+        document.body.innerHTML = "<p>Data tidak tersedia. Silakan isi form terlebih dahulu. <a href='formInput.html'>Kembali ke Form</a></p>";
+    }
+</script>
+
+</body>
+</html>
